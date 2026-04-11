@@ -1,0 +1,14 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: #d7d1cc;
+    margin: 20px;
+}
+
+.titulo {
+    color: #352990;
+}
+
+#utnImg {
+    width: 50px;
+    margin-top: 20px;
+}
