@@ -1,0 +1,39 @@
+:root {
+    --primary-color: #110d4c;
+    --secondary-color: #a5a3be;
+    --border-radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: #d7d1cc;
+    margin: 20px;
+}
+
+.titulo {
+    color: #352990;
+}
+
+#utnImg {
+    width: 50px;
+    margin-top: 20px;
+}
+
+nav a {
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #110d4c;
+    padding: 10px;
+    border-radius: var(--border-radius);
+}
+
