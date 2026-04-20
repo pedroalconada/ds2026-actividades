@@ -1,0 +1,24 @@
+{
+  "name": "ds2026-actividades",
+  "version": "1.0.0",
+  "description": "Pedro Maria Alconada Dente\r s33",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroalconada/ds2026-actividades.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pedroalconada/ds2026-actividades/issues"
+  },
+  "homepage": "https://github.com/pedroalconada/ds2026-actividades#readme",
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
