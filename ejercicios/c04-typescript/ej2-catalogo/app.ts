@@ -57,13 +57,14 @@ function renderizar(libros: Libro[]): void {
         li.textContent = `isbn: ${l.isbn}, titulo: ${l.titulo}, autor: ${l.autor}, genero: ${l.genero}, precio: ${l.precio}`;
         listado.appendChild(li);
     }
+    actualizarStats(libros);
 }
 
 
 function actualizarStats (libros: Libro[]): void {
     const cantidad: number = libros.length;
     const promedio: number = precioPromedio(libros);
-    parrafo.textContent = `Cantidad de libros: ${cantidad}, promedio: ${promedio.toFixed(2)}`;
+    parrafo.textContent = `Cantidad de libros: ${cantidad}, Promedio: ${promedio.toFixed(2)}`;
 }
 
 btnFiltrar.addEventListener('click', function() {

@@ -43,11 +43,12 @@ function renderizar(libros) {
         li.textContent = `isbn: ${l.isbn}, titulo: ${l.titulo}, autor: ${l.autor}, genero: ${l.genero}, precio: ${l.precio}`;
         listado.appendChild(li);
     }
+    actualizarStats(libros);
 }
 function actualizarStats(libros) {
     const cantidad = libros.length;
     const promedio = precioPromedio(libros);
-    parrafo.textContent = `Cantidad de libros: ${cantidad}, promedio: ${promedio.toFixed(2)}`;
+    parrafo.textContent = `Cantidad de libros: ${cantidad}, Promedio: ${promedio.toFixed(2)}`;
 }
 btnFiltrar.addEventListener('click', function () {
     const autor = input.value.trim();
