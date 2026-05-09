@@ -1,3 +1,37 @@
- .navbar {
-    background-color: black;
+.hero {
+    height: 90vh;
+    background-image: linear-gradient(rgba(80, 80, 80, 0.65),
+                        rgba(80, 80, 80, 0.65)),url("../imagenes/fondo-PatioInterno.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #f5e6cc;
+}
+
+.boton-hero {
+    background-color: #D8C3A5;
+    color: #24352F;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+}
+
+.boton-hero:hover {
+    background-color: #E6D3B3;
+}
+
+.hero h1,
+.hero p {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.card {
+    width: 18rem; 
+}
+
+.card-title {
+    min-height: 70px;
+}
+
+.card img {
+    height: 350px;
 }
