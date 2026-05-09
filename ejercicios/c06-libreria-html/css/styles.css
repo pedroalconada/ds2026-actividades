@@ -59,3 +59,13 @@ nav{
     border-radius: 18px;
     border: 1px solid rgba(0,0,0,0.5);
 }
+
+.buscador {
+    background-color: #f8f5ef;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    max-width: 900px;
+    margin: 40px auto;
+}
+
