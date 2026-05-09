@@ -35,3 +35,27 @@
 .card img {
     height: 350px;
 }
+
+
+nav{
+    background-color: #e1d9cf ;
+}
+
+.libro {
+    background-color: #f8f5ef;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.libro img {
+    max-height: 450px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+}
+
+.info-libro {
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,0.5);
+}
