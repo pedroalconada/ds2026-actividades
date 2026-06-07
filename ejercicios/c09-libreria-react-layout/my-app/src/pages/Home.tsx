@@ -1,11 +1,9 @@
-import MyNavbar from "../componentes/Layout/Navbar";
 import Hero from "../componentes/Layout/Hero";
 import BookCard from "../componentes/BookCard";
 
 export default function Home() {
   return (
     <>
-      <MyNavbar />
       <Hero />
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
