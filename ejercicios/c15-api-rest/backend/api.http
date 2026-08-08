@@ -1,0 +1,45 @@
+@baseUrl = http://localhost:3000/api
+
+### Listar Libros
+GET {{baseUrl}}/libros
+
+### Obtener Libro por ID
+GET {{baseUrl}}/libros/1
+
+### Obtener Libro inexistente -> 404
+GET {{baseUrl}}/libros/999
+
+### Crear Libro -> 201
+POST {{baseUrl}}/libros
+Content-Type: application/json
+
+{
+  "title": "Ficciones",
+  "author": "Jorge Luis Borges",
+  "image": ""
+}
+
+### Editar Libro -> 200
+PUT {{baseUrl}}/libros/1
+Content-Type: application/json
+
+{
+  "title": "El principito (Edición Especial)",
+  "author": "Antoine de Saint-Exupéry",
+  "image": ""
+}
+
+### Eliminar Libro -> 204
+DELETE {{baseUrl}}/libros/1
+
+### Listar Autores
+GET {{baseUrl}}/autores
+
+### Crear Autor -> 201
+POST {{baseUrl}}/autores
+Content-Type: application/json
+
+{
+  "nombre": "Julio Cortázar",
+  "nacionalidad": "Argentina"
+}
