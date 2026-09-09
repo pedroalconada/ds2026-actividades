@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/auth.routes";
@@ -16,6 +17,7 @@ app.use(cors(corsOptions));
 app.use(express.json()); 
 app.use("/api/libros", libroRoutes);
 app.use("/api/autores", autorRoutes);
+app.use("/api/auth", authRoutes);
 
 
 app.use((_req, res) => {

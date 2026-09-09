@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { libroSchema, LibroValidado, LibroInput } from '../schemas/libroSchema';
 import { apiFetch } from '../services/api';
+import { useFetch } from '../hooks/useFetch';
+import { Autor } from '../types/libro';
 
 export default function LibroNuevo() {
   const navigate = useNavigate();
   const [errorServidor, setErrorServidor] = useState<string | null>(null);
+  const { data: autores, loading: cargandoAutores, error: errorAutores } = useFetch<Autor[]>('/autores');
 
   const {
     register,
@@ -16,7 +19,10 @@ export default function LibroNuevo() {
     formState: { errors, isSubmitting },
   } = useForm<LibroInput, any, LibroValidado>({
     resolver: zodResolver(libroSchema),
-    defaultValues: { disponible: true },
+    defaultValues: {
+      disponible: true,
+      imagen: 'https://via.placeholder.com/150',
+    },
   });
 
   const onSubmit = async (data: LibroValidado) => {
@@ -38,6 +44,7 @@ export default function LibroNuevo() {
       <h2>Nuevo libro</h2>
 
       {errorServidor && <Alert variant="danger">{errorServidor}</Alert>}
+      {errorAutores && <Alert variant="warning">Error al cargar autores: {errorAutores}</Alert>}
 
       <Form.Group className="mb-3">
         <Form.Label>Título</Form.Label>
@@ -52,12 +59,23 @@ export default function LibroNuevo() {
 
       <Form.Group className="mb-3">
         <Form.Label>Autor</Form.Label>
-        <Form.Control
-          {...register('autor')}
-          isInvalid={!!errors.autor}
-        />
+        {cargandoAutores ? (
+          <div><Spinner animation="border" size="sm" /> Cargando autores...</div>
+        ) : (
+          <Form.Select
+            {...register('autorId')}
+            isInvalid={!!errors.autorId}
+          >
+            <option value="">Seleccione un autor</option>
+            {(autores ?? []).map((autor) => (
+              <option key={autor.id} value={autor.id}>
+                {autor.nombre}
+              </option>
+            ))}
+          </Form.Select>
+        )}
         <Form.Control.Feedback type="invalid">
-          {errors.autor?.message}
+          {errors.autorId?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -70,6 +88,17 @@ export default function LibroNuevo() {
         />
         <Form.Control.Feedback type="invalid">
           {errors.precio?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label>URL de Imagen</Form.Label>
+        <Form.Control
+          {...register('imagen')}
+          isInvalid={!!errors.imagen}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.imagen?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
