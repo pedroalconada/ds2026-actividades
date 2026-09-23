@@ -1,0 +1,125 @@
+@baseUrl = http://localhost:3000/api
+
+### CASO 1: Registro correcto -> 201 (sin passwordHash)
+
+POST {{baseUrl}}/auth/registro
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "email": "carlos@libreria.test",
+  "password": "Password123"
+}
+
+
+### CASO 2: Registro duplicado -> 409 (violación de @unique)
+
+POST {{baseUrl}}/auth/registro
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "email": "carlos@libreria.test",
+  "password": "Password123"
+}
+
+
+### CASO 3: Registro con password débil -> 400 (errores Zod)
+
+POST {{baseUrl}}/auth/registro
+Content-Type: application/json
+
+{
+  "nombre": "Carlos",
+  "email": "carlos2@libreria.test",
+  "password": "corta"
+}
+
+### CASO 4: Login con email inexistente -> 401
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "nadie@libreria.test",
+  "password": "Password123"
+}
+
+### CASO 5: Login con contraseña incorrecta -> 401
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "carlos@libreria.test",
+  "password": "PasswordIncorrecta"
+}
+
+### CASO 6: Login correcto como CLIENTE -> 200 (captura token)
+# @name loginCliente
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "cliente@libreria.test",
+  "password": "Cliente1234"
+}
+
+### Guardo el token del cliente
+@tokenCliente = {{loginCliente.response.body.token}}
+
+### Login como ADMIN (para pruebas que requieran rol ADMIN)
+# @name loginAdmin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@libreria.test",
+  "password": "Admin1234"
+}
+
+### Guardo el token del admin
+@tokenAdmin = {{loginAdmin.response.body.token}}
+
+### CASO 7: GET /auth/yo sin header -> 401
+GET {{baseUrl}}/auth/yo
+
+### CASO 8: GET /auth/yo con token CLIENTE -> 200
+GET {{baseUrl}}/auth/yo
+Authorization: Bearer {{tokenCliente}}
+
+### CASO 9: POST /api/libros sin token -> 401
+POST {{baseUrl}}/libros
+Content-Type: application/json
+
+{
+  "titulo": "Libro Anónimo",
+  "precio": 5000,
+  "imagen": "https://via.placeholder.com/150",
+  "autorId": 1
+}
+
+### CASO 10: POST /api/libros con token CLIENTE -> 403
+POST {{baseUrl}}/libros
+Authorization: Bearer {{tokenCliente}}
+Content-Type: application/json
+
+{
+  "titulo": "Libro de Cliente",
+  "precio": 5000,
+  "imagen": "https://via.placeholder.com/150",
+  "autorId": 1
+}
+
+### CASO 11: POST /api/libros con token ADMIN -> 201
+POST {{baseUrl}}/libros
+Authorization: Bearer {{tokenAdmin}}
+Content-Type: application/json
+
+{
+  "titulo": "Libro Autorizado por Admin",
+  "precio": 8500,
+  "imagen": "https://via.placeholder.com/150",
+  "autorId": 1
+}
+
+### CASO 12: GET /api/libros sin token (público) -> 200
+GET {{baseUrl}}/libros
