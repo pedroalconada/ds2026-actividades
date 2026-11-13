@@ -1,0 +1,521 @@
+/* ==========================================================================
+   Patio Interno Design System - Global Variables & Styles
+   ========================================================================== */
+
+:root {
+  /* Primary Colors */
+  --color-primary: #4e5b4f; /* Dark Green */
+  --color-primary-light: #6a7b6b;
+  --color-primary-dark: #353e35;
+
+  /* Secondary / Accent Colors */
+  --color-accent: #d8c3a5; /* Beige / Gold */
+  --color-accent-hover: #e6d3b3;
+
+  /* Neutral Colors */
+  --color-bg: #f8f5ef;
+  --color-surface: rgba(255, 255, 255, 0.8);
+  --color-text-main: #2c3531;
+  --color-text-muted: #6b705c;
+  --color-white: #ffffff;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+  --glass-blur: blur(12px);
+
+  --glass-dark-bg: rgba(53, 62, 53, 0.78);
+  --glass-dark-border: rgba(255, 255, 255, 0.15);
+
+  /* Typography */
+  --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Spacing & Borders */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 50px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================================================
+   Base & Resets
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-white);
+  background-color: var(--color-primary-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.25;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+/* ==========================================================================
+   Background Layers (Fixed)
+   ========================================================================== */
+
+.page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/img/fondo-PatioInterno.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -2;
+}
+
+.page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(78, 91, 79, 0.88) 0%, rgba(44, 53, 49, 0.95) 100%);
+  z-index: -1;
+}
+
+/* ==========================================================================
+   Section Title with Signature Accent Underline
+   ========================================================================== */
+
+.section-title {
+  text-align: center;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Buttons (Bootstrap overrides & Custom)
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-primary-dark) !important;
+  box-shadow: 0 4px 15px rgba(216, 195, 165, 0.35);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--color-accent-hover) !important;
+  border-color: var(--color-accent-hover) !important;
+  color: var(--color-primary-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(216, 195, 165, 0.55);
+}
+
+.btn-outline,
+.btn-outline-light {
+  background: transparent !important;
+  border: 2px solid var(--color-accent) !important;
+  color: var(--color-accent) !important;
+}
+
+.btn-outline:hover,
+.btn-outline-light:hover,
+.btn-outline:focus,
+.btn-outline-light:focus {
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-primary-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(216, 195, 165, 0.4);
+}
+
+.btn-glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  color: var(--color-white);
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--color-primary-light) !important;
+  border-color: var(--color-primary-light) !important;
+  color: var(--color-white) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-white) !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Cards & Glassmorphism Surfaces
+   ========================================================================== */
+
+.glass-card,
+.card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--glass-shadow);
+  color: var(--color-white);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.32) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  border-color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.card-img-wrapper {
+  height: 290px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-img-wrapper img,
+.card .card-img,
+.card .card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.glass-card:hover .card-img-wrapper img,
+.glass-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-title {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-subtitle,
+.card-author {
+  color: var(--color-accent) !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+/* ==========================================================================
+   Navbar Styling
+   ========================================================================== */
+
+.navbar-patio {
+  background: var(--glass-dark-bg) !important;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-dark-border);
+  padding: 12px 0;
+  transition: var(--transition);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-patio .navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.navbar-patio .navbar-brand img {
+  height: 46px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  transition: var(--transition);
+}
+
+.navbar-patio .navbar-brand:hover img {
+  transform: scale(1.05);
+}
+
+.navbar-patio .nav-link {
+  color: var(--color-white) !important;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 1.05rem;
+  position: relative;
+  padding: 6px 12px !important;
+  opacity: 0.85;
+  transition: var(--transition);
+}
+
+.navbar-patio .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background-color: var(--color-accent);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.navbar-patio .nav-link:hover,
+.navbar-patio .nav-link.active {
+  color: var(--color-accent) !important;
+  opacity: 1;
+}
+
+.navbar-patio .nav-link:hover::after,
+.navbar-patio .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.navbar-patio .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-patio .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ==========================================================================
+   Forms & Controls
+   ========================================================================== */
+
+.glass-container {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--glass-shadow);
+  color: var(--color-white);
+}
+
+.form-label {
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.form-control,
+.form-select {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--color-white) !important;
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-white) !important;
+  box-shadow: 0 0 0 3px rgba(216, 195, 165, 0.25) !important;
+  outline: none !important;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.form-select option {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.form-check-input {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.form-check-label {
+  color: var(--color-white);
+  font-family: var(--font-body);
+}
+
+.invalid-feedback {
+  color: #ffb3b3 !important;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Alerts, Spinners, Badges
+   ========================================================================== */
+
+.alert {
+  border-radius: var(--radius-md) !important;
+  backdrop-filter: var(--glass-blur);
+  font-family: var(--font-body);
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.25) !important;
+  border: 1px solid rgba(220, 53, 69, 0.5) !important;
+  color: #ffcccc !important;
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.2) !important;
+  border: 1px solid rgba(255, 193, 7, 0.45) !important;
+  color: #fff3cd !important;
+}
+
+.spinner-border {
+  border-color: var(--color-accent);
+  border-right-color: transparent;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero-wrapper {
+  padding: 80px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeInDown 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.hero-wrapper h1 {
+  font-size: 3.8rem;
+  color: var(--color-white);
+  margin-bottom: 20px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.hero-wrapper p {
+  font-size: 1.35rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 35px;
+  font-weight: 300;
+  max-width: 650px;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hero-wrapper h1 {
+    font-size: 2.4rem;
+  }
+  .hero-wrapper p {
+    font-size: 1.1rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .glass-container {
+    padding: 24px 18px;
+  }
+}

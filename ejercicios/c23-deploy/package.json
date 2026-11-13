@@ -1,0 +1,15 @@
+{
+  "name": "c23-deploy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Librería Patio Interno",
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "test": "npm test --prefix frontend",
+    "test:backend": "npm test --prefix backend"
+  }
+}
+
