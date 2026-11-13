@@ -8,6 +8,7 @@ import LibroNuevo from "./pages/LibroNuevo";
 import Login from "./pages/Login";
 import PrivateRoute from "./componentes/PrivateRoute";
 import SinPermiso from "./pages/SinPermiso";
+import Contacto from "./pages/Contacto";
 import "./App.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/libros/:id" element={<LibroDetalle />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sin-permiso" element={<SinPermiso />} />
+          <Route path="/contacto" element={<Contacto />} />
 
           <Route element={<PrivateRoute rol="ADMIN" />}>
               <Route path="/libros/nuevo" element={<LibroNuevo />} />

@@ -4,6 +4,11 @@ export interface Autor {
   nacionalidad: string;
 }
 
+export interface Categoria {
+  id: number;
+  nombre: string;
+}
+
 export interface Libro {
   id: number;
   titulo: string;
@@ -12,5 +17,6 @@ export interface Libro {
   disponible: boolean;
   autorId: number;
   autor: Autor;
+  categorias?: Categoria[];
 }
 

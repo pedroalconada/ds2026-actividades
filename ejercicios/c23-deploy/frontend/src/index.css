@@ -345,6 +345,11 @@ a {
   opacity: 1;
 }
 
+.navbar-patio .nav-link.active {
+  background-color: rgba(0, 0, 0, 0.28);
+  border-radius: var(--radius-sm);
+}
+
 .navbar-patio .nav-link:hover::after,
 .navbar-patio .nav-link.active::after {
   transform: scaleX(1);
@@ -404,6 +409,15 @@ a {
 
 .form-control::placeholder {
   color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.contacto-form .form-control::placeholder {
+  color: #a9a9a9 !important;
+  opacity: 0.7;
+}
+
+.contacto-form .form-select.select-placeholder {
+  color: rgba(169, 169, 169, 0.7) !important;
 }
 
 .form-select option {

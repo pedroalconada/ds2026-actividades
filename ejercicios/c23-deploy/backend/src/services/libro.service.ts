@@ -9,10 +9,10 @@ export type LibroDetalle = Prisma.LibroGetPayload<{
   include: { autor: true; categorias: true };
 }>;
 
-export async function findAll(disponible?: boolean): Promise<LibroConAutor[]> {
+export async function findAll(disponible?: boolean): Promise<LibroDetalle[]> {
   return prisma.libro.findMany({
     where: disponible !== undefined ? { disponible } : undefined,
-    include: { autor: true },
+    include: { autor: true, categorias: true },
   });
 }
 

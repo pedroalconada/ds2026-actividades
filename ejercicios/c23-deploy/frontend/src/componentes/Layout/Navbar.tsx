@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 export default function MyNavbar() {
@@ -24,11 +24,13 @@ export default function MyNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto ms-lg-3">
-            <Nav.Link as={Link} to="/">Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/catalogo">Catálogo</Nav.Link>
-            
-            {tieneRol('ADMIN') && (
-              <Nav.Link as={Link} to="/libros/nuevo">Nuevo Libro</Nav.Link>
+            <Nav.Link as={NavLink} to="/" end>Inicio</Nav.Link>
+            <Nav.Link as={NavLink} to="/catalogo">Catálogo</Nav.Link>
+
+            {tieneRol('ADMIN') ? (
+              <Nav.Link as={NavLink} to="/libros/nuevo">Nuevo Libro</Nav.Link>
+            ) : (
+              <Nav.Link as={NavLink} to="/contacto">Contacto</Nav.Link>
             )}
           </Nav>
           

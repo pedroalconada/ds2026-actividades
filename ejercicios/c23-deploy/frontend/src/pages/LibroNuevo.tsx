@@ -7,6 +7,7 @@ import { libroSchema, LibroValidado, LibroInput } from '../schemas/libroSchema';
 import { apiFetch } from '../services/api';
 import { useFetch } from '../hooks/useFetch';
 import { Autor } from '../types/libro';
+import AdminLibros from '../componentes/AdminLibros';
 
 export default function LibroNuevo() {
   const navigate = useNavigate();
@@ -145,6 +146,8 @@ export default function LibroNuevo() {
           </Button>
         </Form>
       </div>
+
+      <AdminLibros />
     </div>
   );
 }
